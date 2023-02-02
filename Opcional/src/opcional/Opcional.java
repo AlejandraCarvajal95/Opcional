@@ -6,7 +6,9 @@ package opcional;
 
 /**
  *
- * @author aleja
+ * @author
+ * Alejandra Carvajal
+ * Sebastian Cifuentes
  */
 public class Opcional {
 
