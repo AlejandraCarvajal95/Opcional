@@ -392,7 +392,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         String cantidadEntrada = jTextField8.getText();
         
         if (isNumeric(idEntrada) && isNumeric(precioUnitarioEntrada) && isNumeric(cantidadEntrada)){
-            
             Integer idEntradaInt = Integer.valueOf(jTextField6.getText());
             double precioUnitarioEntradaDob = Double.valueOf(jTextField7.getText());
             Integer cantidadEntradaInt = Integer.valueOf(jTextField8.getText());
@@ -406,14 +405,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
                 JOptionPane.showMessageDialog(null, "Entrada registrada exitosamente");
             }
-
-        
         }else{
-        
             JOptionPane.showMessageDialog(null, "Por favor ingrese datos numéricos validos");
-        }
-        
-       
+        }       
     }//GEN-LAST:event_registrarEntradaActionPerformed
 
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
