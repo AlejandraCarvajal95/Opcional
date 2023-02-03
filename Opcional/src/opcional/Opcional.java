@@ -4,6 +4,8 @@
  */
 package opcional;
 
+import vista.VentanaPrincipal;
+
 /**
  *
  * @author
@@ -16,7 +18,10 @@ public class Opcional {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+          System.out.println("Inicio de programa");
+
+        VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+        ventanaPrincipal.setVisible (true);
     }
     
 }
