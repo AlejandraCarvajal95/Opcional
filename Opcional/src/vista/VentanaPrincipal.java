@@ -357,11 +357,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "El Id "+ idSalidaInt + " no existe");
 
             }else{
+               //ValoracionDeInventario val = valoracionDeInventarioControlador.get ;
+               // movimientosControlador.registrarSalida(productoControlador.getProducto(idSalidaInt), "pendiente", cantidadSalidaInt, val);
+                valoracionDeInventarioControlador.actualizarLaValoracionDelInventarioDespuesDeSalida(idSalidaInt, cantidadSalidaInt);
 
-               /* productoControlador.registrar(idInt, nombre);
-                movimientosControlador.registrarRegistro(productoControlador.getProducto(idInt), "Pendiente", cantidadInt, precioUnitarioDob);
-                valoracionDeInventarioControlador.registrarPrimeraValoracion(productoControlador.getProducto(idInt), cantidadInt, precioUnitarioDob);
-                */
                 JOptionPane.showMessageDialog(null, "Salida registrada exitosamente");
             }
 
