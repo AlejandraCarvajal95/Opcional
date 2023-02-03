@@ -133,6 +133,10 @@ public class ValoracionDeInventarioControlador {
         double valorTotal= cantidad*((listaValoracionDelInventario.get(id)).getValorUnidad());
         (listaValoracionDelInventario.get(id)).setValorTotal(valorTotal);
     }
+    
+    public ValoracionDelInventarioModelo getValoracionDelInventarioModelo(Integer id) {
+        return listaValoracionDelInventario.get(id);
+    }
 
     public double getValorUnitario(Integer id) {
         return (listaValoracionDelInventario.get(id)).getValorUnidad();
