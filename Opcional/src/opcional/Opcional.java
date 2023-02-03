@@ -4,6 +4,9 @@
  */
 package opcional;
 
+import controlador.MovimientosControlador;
+import controlador.ProductoControlador;
+import controlador.ValoracionDeInventarioControlador;
 import vista.VentanaPrincipal;
 
 /**
@@ -21,7 +24,17 @@ public class Opcional {
           System.out.println("Inicio de programa");
 
         VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+       
         ventanaPrincipal.setVisible (true);
+        
+        MovimientosControlador movimientosControlador = new MovimientosControlador();
+        movimientosControlador.restaurarDatos();
+        
+        ProductoControlador productoControlador = new ProductoControlador();
+        productoControlador.restaurarDatos();
+        
+        ValoracionDeInventarioControlador valoracionDeInventarioControlador = new ValoracionDeInventarioControlador();
+        valoracionDeInventarioControlador.restaurarDatos();
     }
     
 }
