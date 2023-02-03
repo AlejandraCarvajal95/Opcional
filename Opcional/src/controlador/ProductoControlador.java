@@ -35,7 +35,7 @@ public class ProductoControlador {
         listaProductos.put(id, producto);
     }
     
-    public String listar() {
+    public static String listar() {
         String lista = "---------- Productos ----------\n";
         for(int id : listaProductos.keySet()){
             lista += listaProductos.get(id) + "\n";

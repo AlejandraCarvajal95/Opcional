@@ -31,7 +31,7 @@ public class MovimientosControlador {
         listaMovimientos = new HashMap<>();
     }
     
-    public String listar(Integer id) {
+    public static String listar(Integer id) {
         String lista = "---------- Movimientos del producto " + ((listaMovimientos.get(id)).getProducto()).getNombre() + " ----------\n";
         for(int idAux : listaMovimientos.keySet()){
             if (idAux == id) {
