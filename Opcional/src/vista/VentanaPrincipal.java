@@ -376,7 +376,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         String aux = jTextField5.getText();
         if (isNumeric(aux)){
             Integer id = Integer.valueOf(jTextField5.getText());
-            String textoDeConsulta = movimientosControlador.listar(id) + "\n" + valoracionDeInventarioControlador.verValoracionDelInventario(id);
+            String textoDeConsulta = movimientosControlador.listar(id,productoControlador) + "\n" + valoracionDeInventarioControlador.verValoracionDelInventario(id);
             jTextArea1.setText(textoDeConsulta);
         }
         else {

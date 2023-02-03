@@ -10,7 +10,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
@@ -26,10 +28,12 @@ import modelo.ProductoModelo;
  */
 
 public class MovimientosControlador {
-    private static Map <Integer, MovimientosModelo> listaMovimientos;
+//    private static Map <Integer, MovimientosModelo> listaMovimientos;
+    private List<String> listaMovimientos;
     
     public MovimientosControlador(){
-        listaMovimientos = new HashMap<>();
+//        listaMovimientos = new HashMap<>();
+    listaMovimientos = new ArrayList<>();
     }
     /*
     public String  PonerFecha(){
@@ -37,24 +41,21 @@ public class MovimientosControlador {
     return String fecha;
     }*/
     
-    public String listar(Integer id) {
-        if (listaMovimientos.containsKey(id)){
-            String lista = "---------- Movimientos del producto " + ((listaMovimientos.get(id)).getProducto()).getNombre() + " ----------\n";
-            for(int idAux : listaMovimientos.keySet()){
-                if (idAux == id) {
-                    lista += listaMovimientos.get(idAux) + "\n";
-                }
+    public String listar(Integer id, ProductoControlador productoControlador) {
+        String strAux = "{Id: " + String.valueOf(id);
+        String lista = "---------- Movimientos del producto " + ((productoControlador.getProducto(id))).getNombre() + " ----------\n";
+        for(int intAux = 0; intAux < listaMovimientos.size(); intAux++){
+            if ((listaMovimientos.get(intAux)).contains(strAux)) {
+                lista += listaMovimientos.get(intAux) + "\n";
             }
-            return lista;
-        } else {
-            return "";
         }
+        return lista;
     }
     
     public void generarCSV() {
         String archivoPersistencia = "";
-        for(int codigo : listaMovimientos.keySet()){
-            archivoPersistencia += listaMovimientos.get(codigo) + "\n";
+        for(int intAux = 0; intAux < listaMovimientos.size(); intAux++){
+            archivoPersistencia += listaMovimientos.get(intAux) + "\n";
         }
         try {
             FileOutputStream os = new FileOutputStream(new File("src\\Persistencia\\movimientosPersistencia.txt"));
@@ -68,50 +69,15 @@ public class MovimientosControlador {
     
     public void restaurarDatos() {
         File archivo = new File("src\\Persistencia\\movimientosPersistencia.txt");
-        StringTokenizer stringTokenizer;
   
-        String cadena1;
-        String cadena2;
-        
-        Integer id;
-        String nombre;
-        String fecha;
-        String movimiento;
-        Integer cantidad;
-        double valorUnidad;
-        double valorTotal;
+        String cadena;
         
         try {
             FileReader fileReader = new FileReader(archivo);
             try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {
 
-                while ((cadena1 = bufferedReader.readLine()) != null){
-                    cadena2 = cadena1.replace("{", "");
-                    cadena1 = cadena2.replace("Id: ", "");
-                    cadena2 = cadena1.replace(" Nombre: ", "");
-                    cadena1 = cadena2.replace(" Fecha: ", "");
-                    cadena2 = cadena1.replace(" Movimiento: ", "");
-                    cadena1 = cadena2.replace(" Cantidad: ", "");
-                    cadena2 = cadena1.replace(" Valor unidad: ", "");
-                    cadena1 = cadena2.replace(" Valor total: ", "");
-                    cadena2 = cadena1.replace("}", "");
-                    
-                    stringTokenizer = new StringTokenizer(cadena2,",");
-                    
-                    if (stringTokenizer.countTokens() == 7) {
-                        id = Integer.valueOf(stringTokenizer.nextToken());
-                        nombre = stringTokenizer.nextToken();
-                        ProductoModelo producto = new ProductoModelo(id, nombre);
-                        
-                        fecha = stringTokenizer.nextToken();
-                        movimiento = stringTokenizer.nextToken();
-                        cantidad = Integer.valueOf(stringTokenizer.nextToken());
-                        valorUnidad = Double.valueOf(stringTokenizer.nextToken());
-                        valorTotal = Double.valueOf(stringTokenizer.nextToken());
-                        
-                        MovimientosModelo movimientos = new MovimientosModelo(producto, fecha, movimiento, cantidad, valorUnidad, valorTotal);
-                        listaMovimientos.put(id, movimientos);
-                    } 
+                while ((cadena = bufferedReader.readLine()) != null){
+                    listaMovimientos.add(cadena);
                 }
             }
         }
@@ -124,16 +90,16 @@ public class MovimientosControlador {
     
     public void registrarRegistro(ProductoModelo producto, String fecha, Integer cantidad, double valorUnidad) {
         MovimientosModelo movimientos = new MovimientosModelo(producto, fecha, "Registro", cantidad, valorUnidad, (valorUnidad*cantidad));
-        listaMovimientos.put((movimientos.getProducto()).getId(), movimientos);
+        listaMovimientos.add(movimientos.toString());
     }
     
     public void registrarEntrada(ProductoModelo producto, String fecha, Integer cantidad, double valorUnidad) {
         MovimientosModelo movimientos = new MovimientosModelo(producto, fecha, "Entrada", cantidad, valorUnidad, (valorUnidad*cantidad));
-        listaMovimientos.put((movimientos.getProducto()).getId(), movimientos);
+        listaMovimientos.add(movimientos.toString());
     }
     
     public void registrarSalida(ProductoModelo producto, String fecha, Integer cantidad, ValoracionDeInventarioControlador valoracionDeInventario) {
         MovimientosModelo movimientos = new MovimientosModelo(producto, fecha, "Salida", cantidad, valoracionDeInventario.getValorUnitario(producto.getId()), ((valoracionDeInventario.getValorUnitario(producto.getId()))*cantidad));
-        listaMovimientos.put((movimientos.getProducto()).getId(), movimientos);
+        listaMovimientos.add(movimientos.toString());
     }
 }

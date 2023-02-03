@@ -1,3 +1,2 @@
-{Id: 1, Nombre: Jabon, Cantidad: 60, Valor unidad: 1166.6666666666667, Valor total: 70000.0}
-{Id: 2, Nombre: Shampoo, Cantidad: 20, Valor unidad: 5000.0, Valor total: 100000.0}
-{Id: 323, Nombre: sdcd, Cantidad: 12, Valor unidad: 12.0, Valor total: 144.0}
+{Id: 1, Nombre: Alejandra, Cantidad: 5, Valor unidad: 130000.0, Valor total: 650000.0}
+{Id: 2, Nombre: Levi, Cantidad: 3, Valor unidad: 1000000.0, Valor total: 3000000.0}
