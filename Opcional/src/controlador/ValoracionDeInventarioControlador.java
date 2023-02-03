@@ -46,7 +46,7 @@ public class ValoracionDeInventarioControlador {
         return lista;
     }
     
-    public void generarCSV() {
+    public static void generarCSV() {
         String archivoPersistencia = "";
         for(int codigo : listaValoracionDelInventario.keySet()){
             archivoPersistencia += listaValoracionDelInventario.get(codigo) + "\n";

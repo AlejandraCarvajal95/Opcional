@@ -41,7 +41,7 @@ public class MovimientosControlador {
         return lista;
     }
     
-    public void generarCSV() {
+    public static void generarCSV() {
         String archivoPersistencia = "";
         for(int codigo : listaMovimientos.keySet()){
             archivoPersistencia += listaMovimientos.get(codigo) + "\n";

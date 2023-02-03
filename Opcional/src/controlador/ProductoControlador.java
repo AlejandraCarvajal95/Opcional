@@ -43,7 +43,7 @@ public class ProductoControlador {
         return lista;
     }
     
-    public void generarCSV() {
+    public static void generarCSV() {
         String archivoPersistencia = "";
         for(int codigo : listaProductos.keySet()){
             archivoPersistencia += listaProductos.get(codigo) + "\n";
