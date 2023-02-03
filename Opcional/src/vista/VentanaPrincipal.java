@@ -44,7 +44,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        registrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -54,13 +54,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        consultar = new javax.swing.JButton();
         jTextField5 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
+        registrarEntrada = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -68,7 +68,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        registrarSalida = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -79,10 +79,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jButton1.setText("REGISTRAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        registrar.setText("REGISTRAR");
+        registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                registrarActionPerformed(evt);
             }
         });
 
@@ -123,14 +123,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(69, 69, 69)
-                .addComponent(jButton1)
+                .addComponent(registrar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jButton1)
+                .addComponent(registrar)
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
@@ -152,10 +152,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jButton3.setText("CONSULTAR");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        consultar.setText("CONSULTAR");
+        consultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                consultarActionPerformed(evt);
             }
         });
 
@@ -182,14 +182,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addContainerGap())))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(65, 65, 65)
-                .addComponent(jButton3)
+                .addComponent(consultar)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jButton3)
+                .addComponent(consultar)
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -201,10 +201,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jButton4.setText("REGISTRAR ENTRADA");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        registrarEntrada.setText("REGISTRAR ENTRADA");
+        registrarEntrada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                registrarEntradaActionPerformed(evt);
             }
         });
 
@@ -239,14 +239,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(jButton4)
+                .addComponent(registrarEntrada)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jButton4)
+                .addComponent(registrarEntrada)
                 .addGap(34, 34, 34)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -264,10 +264,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jButton2.setText("REGISTRAR SALIDA");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        registrarSalida.setText("REGISTRAR SALIDA");
+        registrarSalida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                registrarSalidaActionPerformed(evt);
             }
         });
 
@@ -281,7 +281,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(registrarSalida)
                 .addGap(23, 23, 23))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
@@ -300,7 +300,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jButton2)
+                .addComponent(registrarSalida)
                 .addGap(28, 28, 28)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -336,11 +336,38 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void registrarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarSalidaActionPerformed
+        String idSalida = jTextField9.getText();
+        
+        String cantidadSalida = jTextField10.getText();
+        
+        if (isNumeric(idSalida) && isNumeric(cantidadSalida)){
+            
+            Integer idSalidaInt = Integer.valueOf(jTextField9.getText());
+            Integer cantidadSalidaInt = Integer.valueOf(jTextField10.getText());
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+            if(!ProductoControlador.getListaProductos().containsKey(idSalidaInt)){
+                JOptionPane.showMessageDialog(null, "El Id "+ idSalidaInt + " no existe");
+
+            }else{
+
+               /* productoControlador.registrar(idInt, nombre);
+                movimientosControlador.registrarRegistro(productoControlador.getProducto(idInt), "Pendiente", cantidadInt, precioUnitarioDob);
+                valoracionDeInventarioControlador.registrarPrimeraValoracion(productoControlador.getProducto(idInt), cantidadInt, precioUnitarioDob);
+                */
+                JOptionPane.showMessageDialog(null, "Salida registrada exitosamente");
+            }
+
+        
+        }else{
+        
+            JOptionPane.showMessageDialog(null, "Por favor ingrese datos numéricos validos");
+        }
+        
+       
+    }//GEN-LAST:event_registrarSalidaActionPerformed
+
+    private void consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarActionPerformed
         String aux = jTextField5.getText();
         if (isNumeric(aux)){
             Integer id = Integer.valueOf(jTextField5.getText());
@@ -350,13 +377,41 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         else {
             jTextArea1.setText(productoControlador.listar());
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_consultarActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void registrarEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarEntradaActionPerformed
+        String idEntrada = jTextField6.getText();
+        String precioUnitarioEntrada = jTextField7.getText();
+        String cantidadEntrada = jTextField8.getText();
+        
+        if (isNumeric(idEntrada) && isNumeric(precioUnitarioEntrada) && isNumeric(cantidadEntrada)){
+            
+            Integer idEntradaInt = Integer.valueOf(jTextField6.getText());
+            double precioUnitarioEntradaDob = Double.valueOf(jTextField7.getText());
+            Integer cantidadEntradaInt = Integer.valueOf(jTextField8.getText());
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+            if(!ProductoControlador.getListaProductos().containsKey(idEntradaInt)){
+                JOptionPane.showMessageDialog(null, "El Id "+ idEntradaInt + " no existe");
+
+            }else{
+
+               /* productoControlador.registrar(idInt, nombre);
+                movimientosControlador.registrarRegistro(productoControlador.getProducto(idInt), "Pendiente", cantidadInt, precioUnitarioDob);
+                valoracionDeInventarioControlador.registrarPrimeraValoracion(productoControlador.getProducto(idInt), cantidadInt, precioUnitarioDob);
+                */
+                JOptionPane.showMessageDialog(null, "Entrada registrada exitosamente");
+            }
+
+        
+        }else{
+        
+            JOptionPane.showMessageDialog(null, "Por favor ingrese datos numéricos validos");
+        }
+        
+       
+    }//GEN-LAST:event_registrarEntradaActionPerformed
+
+    private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
         String id = jTextField1.getText();
         String nombre = jTextField2.getText();
         String precioUnitario = jTextField3.getText();
@@ -386,19 +441,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
         
 
-
-        
-       /* Integer id = Integer.valueOf(jTextField1.getText());
-        String nombre = jTextField2.getText();
-        double precioUnitario = Double.valueOf(jTextField3.getText());
-        Integer cantidad = Integer.valueOf(jTextField4.getText());
-        
-        productoControlador.registrar(id, nombre);
-        movimientosControlador.registrarRegistro(productoControlador.getProducto(id), "Pendiente", cantidad, precioUnitario);
-        valoracionDeInventarioControlador.registrarPrimeraValoracion(productoControlador.getProducto(id), cantidad, precioUnitario);
-        
-        JOptionPane.showMessageDialog(null, "Producto registrado exitosamente");*/
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_registrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -470,10 +513,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private ValoracionDeInventarioControlador valoracionDeInventarioControlador;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton consultar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -500,5 +540,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JButton registrar;
+    private javax.swing.JButton registrarEntrada;
+    private javax.swing.JButton registrarSalida;
     // End of variables declaration//GEN-END:variables
 }
