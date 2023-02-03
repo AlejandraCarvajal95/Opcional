@@ -31,11 +31,6 @@ public class MovimientosControlador {
         listaMovimientos = new HashMap<>();
     }
     
-    public void agregar(ProductoModelo producto, String fecha, String movimiento, Integer cantidad, double valorUnidad, double valorTotal) {
-        MovimientosModelo movimientos = new MovimientosModelo(producto, fecha, movimiento, cantidad, valorUnidad, valorTotal);
-        listaMovimientos.put((movimientos.getProducto()).getId(), movimientos);
-    }
-    
     public String listar(Integer id) {
         String lista = "---------- Movimientos del producto " + ((listaMovimientos.get(id)).getProducto()).getNombre() + " ----------\n";
         for(int idAux : listaMovimientos.keySet()){
@@ -115,5 +110,21 @@ public class MovimientosControlador {
         } catch (IOException ex) {
             Logger.getLogger(MovimientosControlador.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }    
+    }
+    
+    public void registrarRegistro(ProductoModelo producto, String fecha, Integer cantidad, double valorUnidad) {
+        MovimientosModelo movimientos = new MovimientosModelo(producto, fecha, "Registro", cantidad, valorUnidad, (valorUnidad*cantidad));
+        listaMovimientos.put((movimientos.getProducto()).getId(), movimientos);
+    }
+    
+    public void registrarEntrada(ProductoModelo producto, String fecha, Integer cantidad, double valorUnidad) {
+        MovimientosModelo movimientos = new MovimientosModelo(producto, fecha, "Entrada", cantidad, valorUnidad, (valorUnidad*cantidad));
+        listaMovimientos.put((movimientos.getProducto()).getId(), movimientos);
+    }
+    
+    public void registrarSalida(ProductoModelo producto, String fecha, Integer cantidad, ValoracionDeInventarioControlador valoracionDeInventario) {
+        
+        MovimientosModelo movimientos = new MovimientosModelo(producto, fecha, "Salida", cantidad, valoracionDeInventario.getValorUnitario(producto.getId()), ((valoracionDeInventario.getValorUnitario(producto.getId()))*cantidad));
+        listaMovimientos.put((movimientos.getProducto()).getId(), movimientos);
+    }
 }

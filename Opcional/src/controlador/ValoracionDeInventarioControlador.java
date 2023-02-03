@@ -112,10 +112,19 @@ public class ValoracionDeInventarioControlador {
         }
     }
     
-    public void valorizarElInventario(Integer id){
+    public void actualizarLaValoracionDelInventarioDespuesDeEntrada(Integer id){
         (listaValoracionDelInventario.get(id)).setCantidad(0);
         (listaValoracionDelInventario.get(id)).setValorUnidad(0);
         (listaValoracionDelInventario.get(id)).setValorTotal(0);
-        
+    }
+    
+    public void actualizarLaValoracionDelInventarioDespuesDeSalida(Integer id){
+        (listaValoracionDelInventario.get(id)).setCantidad(0);
+        (listaValoracionDelInventario.get(id)).setValorUnidad(0);
+        (listaValoracionDelInventario.get(id)).setValorTotal(0);
+    }
+
+    public double getValorUnitario(Integer id) {
+        return (listaValoracionDelInventario.get(id)).getValorUnidad();
     }
 }

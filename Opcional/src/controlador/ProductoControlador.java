@@ -95,5 +95,4 @@ public class ProductoControlador {
             Logger.getLogger(ProductoControlador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 }
