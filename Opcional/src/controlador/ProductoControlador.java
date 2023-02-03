@@ -99,4 +99,8 @@ public class ProductoControlador {
     public ProductoModelo getProducto(Integer id) {
         return listaProductos.get(id);
     }
+    
+    public static Map<Integer, ProductoModelo> getListaProductos() {
+        return listaProductos;
+    }
 }

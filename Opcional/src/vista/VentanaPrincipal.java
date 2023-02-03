@@ -357,7 +357,38 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Integer id = Integer.valueOf(jTextField1.getText());
+        String id = jTextField1.getText();
+        String nombre = jTextField2.getText();
+        String precioUnitario = jTextField3.getText();
+        String cantidad = jTextField4.getText();
+        
+        if (isNumeric(id) && isNumeric(precioUnitario) && isNumeric(cantidad)){
+            
+                Integer idInt = Integer.valueOf(jTextField1.getText());
+                double precioUnitarioDob = Double.valueOf(jTextField3.getText());
+                Integer cantidadInt = Integer.valueOf(jTextField4.getText());
+
+                if(ProductoControlador.getListaProductos().containsKey(idInt)){
+                    JOptionPane.showMessageDialog(null, "El Id "+ id + " ya existe");
+
+                }else{
+
+                    productoControlador.registrar(idInt, nombre);
+                    movimientosControlador.registrarRegistro(productoControlador.getProducto(idInt), "Pendiente", cantidadInt, precioUnitarioDob);
+                    valoracionDeInventarioControlador.registrarPrimeraValoracion(productoControlador.getProducto(idInt), cantidadInt, precioUnitarioDob);
+
+                    JOptionPane.showMessageDialog(null, "Producto registrado exitosamente");
+            }
+        
+        }else{
+        
+            JOptionPane.showMessageDialog(null, "Por favor ingrese datos numéricos validos");
+        }
+        
+
+
+        
+       /* Integer id = Integer.valueOf(jTextField1.getText());
         String nombre = jTextField2.getText();
         double precioUnitario = Double.valueOf(jTextField3.getText());
         Integer cantidad = Integer.valueOf(jTextField4.getText());
@@ -366,7 +397,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         movimientosControlador.registrarRegistro(productoControlador.getProducto(id), "Pendiente", cantidad, precioUnitario);
         valoracionDeInventarioControlador.registrarPrimeraValoracion(productoControlador.getProducto(id), cantidad, precioUnitario);
         
-        JOptionPane.showMessageDialog(null, "Producto registrado exitosamente");
+        JOptionPane.showMessageDialog(null, "Producto registrado exitosamente");*/
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
