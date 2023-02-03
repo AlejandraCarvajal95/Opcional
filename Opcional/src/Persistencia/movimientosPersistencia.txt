@@ -1,0 +1,1 @@
+Producto{Codigo: 222, Nombre: Jabon, Precio unitario de compra: 1000, Precio unitario de venta: 2000, Cantidad de unidades disponibles: 10}
