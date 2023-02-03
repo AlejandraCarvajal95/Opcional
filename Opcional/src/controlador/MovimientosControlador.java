@@ -31,6 +31,11 @@ public class MovimientosControlador {
     public MovimientosControlador(){
         listaMovimientos = new HashMap<>();
     }
+    /*
+    public String  PonerFecha(){
+    
+    return String fecha;
+    }*/
     
     public String listar(Integer id) {
         if (listaMovimientos.containsKey(id)){

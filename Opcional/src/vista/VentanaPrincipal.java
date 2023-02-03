@@ -11,6 +11,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author aleja
@@ -210,6 +211,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel6.setText("ID:");
 
+        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField6ActionPerformed(evt);
+            }
+        });
+
         jLabel7.setText("PRECIO UNITARIO:");
 
         jLabel8.setText("CANTIDAD:");
@@ -394,11 +401,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "El Id "+ idEntradaInt + " no existe");
 
             }else{
+                movimientosControlador.registrarEntrada(productoControlador.getProducto(idEntradaInt), "pendiente", cantidadEntradaInt, precioUnitarioEntradaDob);
+                valoracionDeInventarioControlador.actualizarLaValoracionDelInventarioDespuesDeEntrada(idEntradaInt, precioUnitarioEntradaDob, cantidadEntradaInt);
 
-               /* productoControlador.registrar(idInt, nombre);
-                movimientosControlador.registrarRegistro(productoControlador.getProducto(idInt), "Pendiente", cantidadInt, precioUnitarioDob);
-                valoracionDeInventarioControlador.registrarPrimeraValoracion(productoControlador.getProducto(idInt), cantidadInt, precioUnitarioDob);
-                */
                 JOptionPane.showMessageDialog(null, "Entrada registrada exitosamente");
             }
 
@@ -442,6 +447,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
 
     }//GEN-LAST:event_registrarActionPerformed
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6ActionPerformed
 
     /**
      * @param args the command line arguments
