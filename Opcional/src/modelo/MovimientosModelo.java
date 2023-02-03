@@ -74,6 +74,6 @@ public class MovimientosModelo {
     
     @Override
     public String toString() {
-        return "{" + "Id: " + this.getProducto().getId() + "Nombre: " + this.getProducto().getNombre() + "Fecha: " + this.getFecha() + "Movimiento: " + this.getMovimiento() + "Cantidad: " + this.cantidad + "Valor unidad: " + this.getValorUnidad() + "Valor total: " + this.getValorTotal() + "}";
+        return "{" + "Id: " + this.getProducto().getId() + ", Nombre: " + this.getProducto().getNombre() + ", Fecha: " + this.getFecha() + ", Movimiento: " + this.getMovimiento() + ", Cantidad: " + this.cantidad + ", Valor unidad: " + this.getValorUnidad() + ", Valor total: " + this.getValorTotal() + "}";
     }
 }

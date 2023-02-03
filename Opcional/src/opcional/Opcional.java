@@ -26,15 +26,5 @@ public class Opcional {
         VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
        
         ventanaPrincipal.setVisible (true);
-        
-        MovimientosControlador movimientosControlador = new MovimientosControlador();
-        movimientosControlador.restaurarDatos();
-        
-        ProductoControlador productoControlador = new ProductoControlador();
-        productoControlador.restaurarDatos();
-        
-        ValoracionDeInventarioControlador valoracionDeInventarioControlador = new ValoracionDeInventarioControlador();
-        valoracionDeInventarioControlador.restaurarDatos();
     }
-    
 }

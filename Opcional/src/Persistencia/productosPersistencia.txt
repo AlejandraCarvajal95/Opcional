@@ -1,0 +1,2 @@
+{Id: 1, Nombre: Jabon}
+{Id: 2, Nombre: Shampoo}

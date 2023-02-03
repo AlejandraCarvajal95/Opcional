@@ -30,12 +30,12 @@ public class ProductoControlador {
         listaProductos = new HashMap<>();
     }
     
-    public void agregar(Integer id, String nombre) {
+    public void registrar(Integer id, String nombre) {
         ProductoModelo producto = new ProductoModelo(id, nombre);
         listaProductos.put(id, producto);
     }
     
-    public static String listar() {
+    public String listar() {
         String lista = "---------- Productos ----------\n";
         for(int id : listaProductos.keySet()){
             lista += listaProductos.get(id) + "\n";
@@ -43,13 +43,13 @@ public class ProductoControlador {
         return lista;
     }
     
-    public static void generarCSV() {
+    public void generarCSV() {
         String archivoPersistencia = "";
         for(int codigo : listaProductos.keySet()){
             archivoPersistencia += listaProductos.get(codigo) + "\n";
         }
         try {
-            FileOutputStream os = new FileOutputStream(new File("src\\main\\java\\persistencia\\productosPersistencia.txt"));
+            FileOutputStream os = new FileOutputStream(new File("src\\Persistencia\\productosPersistencia.txt"));
             os.write(archivoPersistencia.getBytes());
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ProductoControlador.class.getName()).log(Level.SEVERE, null, ex);
@@ -59,7 +59,7 @@ public class ProductoControlador {
     }
     
     public void restaurarDatos() {
-        File archivo = new File("src\\main\\java\\persistencia\\productosPersistencia.txt");
+        File archivo = new File("src\\Persistencia\\productosPersistencia.txt");
         StringTokenizer stringTokenizer;
   
         String cadena1;
@@ -94,5 +94,9 @@ public class ProductoControlador {
         } catch (IOException ex) {
             Logger.getLogger(ProductoControlador.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public ProductoModelo getProducto(Integer id) {
+        return listaProductos.get(id);
     }
 }

@@ -30,29 +30,28 @@ public class ValoracionDeInventarioControlador {
     public ValoracionDeInventarioControlador(){
         listaValoracionDelInventario = new HashMap<>();
     }
-    
-    public void agregar(ProductoModelo producto, Integer cantidad, double valorUnidad, double valorTotal) {
-        ValoracionDelInventarioModelo valoracionDelInventario = new ValoracionDelInventarioModelo(producto, cantidad, valorUnidad, valorTotal);
-        listaValoracionDelInventario.put((valoracionDelInventario.getProducto()).getId(), valoracionDelInventario);
-    }
 
     public String verValoracionDelInventario(Integer id) {
-        String lista = "---------- Valoracion del inventario del producto " + ((listaValoracionDelInventario.get(id)).getProducto()).getNombre() + " ----------\n";
-        for(int idAux : listaValoracionDelInventario.keySet()){
-            if (idAux == id) {
-                lista += listaValoracionDelInventario.get(idAux) + "\n";
+        if (listaValoracionDelInventario.containsKey(id)){
+            String lista = "---------- Valoracion del inventario del producto " + ((listaValoracionDelInventario.get(id)).getProducto()).getNombre() + " ----------\n";
+            for(int idAux : listaValoracionDelInventario.keySet()){
+                if (idAux == id) {
+                    lista += listaValoracionDelInventario.get(idAux) + "\n";
+                }
             }
+            return lista;
+        } else {
+            return "";
         }
-        return lista;
     }
     
-    public static void generarCSV() {
+    public void generarCSV() {
         String archivoPersistencia = "";
         for(int codigo : listaValoracionDelInventario.keySet()){
             archivoPersistencia += listaValoracionDelInventario.get(codigo) + "\n";
         }
         try {
-            FileOutputStream os = new FileOutputStream(new File("src\\main\\java\\persistencia\\valoracionDeInventarioPersistencia.txt"));
+            FileOutputStream os = new FileOutputStream(new File("src\\Persistencia\\valoracionDelInventarioPersistencia.txt"));
             os.write(archivoPersistencia.getBytes());
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ValoracionDeInventarioControlador.class.getName()).log(Level.SEVERE, null, ex);
@@ -62,7 +61,7 @@ public class ValoracionDeInventarioControlador {
     }
     
     public void restaurarDatos() {
-        File archivo = new File("src\\main\\java\\persistencia\\valoracionDeInventarioPersistencia.txt");
+        File archivo = new File("src\\Persistencia\\valoracionDelInventarioPersistencia.txt");
         StringTokenizer stringTokenizer;
   
         String cadena1;
@@ -112,16 +111,27 @@ public class ValoracionDeInventarioControlador {
         }
     }
     
-    public void actualizarLaValoracionDelInventarioDespuesDeEntrada(Integer id){
-        (listaValoracionDelInventario.get(id)).setCantidad(0);
-        (listaValoracionDelInventario.get(id)).setValorUnidad(0);
-        (listaValoracionDelInventario.get(id)).setValorTotal(0);
+    public void registrarPrimeraValoracion(ProductoModelo producto, Integer cantidad, double valorUnidad) {
+        double valorTotal = valorUnidad*cantidad;
+        ValoracionDelInventarioModelo valoracionDelInventario = new ValoracionDelInventarioModelo(producto, cantidad, valorUnidad, valorTotal);
+        listaValoracionDelInventario.put((valoracionDelInventario.getProducto()).getId(), valoracionDelInventario);
     }
     
-    public void actualizarLaValoracionDelInventarioDespuesDeSalida(Integer id){
-        (listaValoracionDelInventario.get(id)).setCantidad(0);
-        (listaValoracionDelInventario.get(id)).setValorUnidad(0);
-        (listaValoracionDelInventario.get(id)).setValorTotal(0);
+    public void actualizarLaValoracionDelInventarioDespuesDeEntrada(Integer id, double precioDeVentaUnitario, Integer cantidadDeEntradas){
+        Integer cantidad = ((listaValoracionDelInventario.get(id)).getCantidad())+cantidadDeEntradas;
+        double valorUnidad = (((listaValoracionDelInventario.get(id)).getValorTotal())+(precioDeVentaUnitario*cantidadDeEntradas))/(((listaValoracionDelInventario.get(id)).getCantidad())+cantidadDeEntradas);
+        double valorTotal = cantidad*valorUnidad;
+        (listaValoracionDelInventario.get(id)).setCantidad(cantidad);
+        (listaValoracionDelInventario.get(id)).setValorUnidad(valorUnidad);
+        (listaValoracionDelInventario.get(id)).setValorTotal(valorTotal);
+    }
+    
+    public void actualizarLaValoracionDelInventarioDespuesDeSalida(Integer id, Integer cantidadDeSalidas){
+        Integer cantidad = ((listaValoracionDelInventario.get(id)).getCantidad())-cantidadDeSalidas;
+        (listaValoracionDelInventario.get(id)).setCantidad(cantidad);
+//        (listaValoracionDelInventario.get(id)).setValorUnidad(0);
+        double valorTotal= cantidad*((listaValoracionDelInventario.get(id)).getValorUnidad());
+        (listaValoracionDelInventario.get(id)).setValorTotal(valorTotal);
     }
 
     public double getValorUnitario(Integer id) {

@@ -9,6 +9,7 @@ import controlador.ProductoControlador;
 import controlador.ValoracionDeInventarioControlador;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,7 +21,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      * Creates new form VentanaPrincipal
      */
     public VentanaPrincipal() {
+        movimientosControlador = new MovimientosControlador();
+        movimientosControlador.restaurarDatos();
+        
+        productoControlador = new ProductoControlador();
+        productoControlador.restaurarDatos();
+        
+        valoracionDeInventarioControlador = new ValoracionDeInventarioControlador();
+        valoracionDeInventarioControlador.restaurarDatos();
+        
         initComponents();
+        generarCSValCerrar();
     }
 
     /**
@@ -69,6 +80,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jButton1.setText("REGISTRAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("ID:");
 
@@ -325,13 +341,33 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-     jTextArea1.setText(ProductoControlador.listar());
-     //verValoracionDelInventario
+        String aux = jTextField5.getText();
+        if (isNumeric(aux)){
+            Integer id = Integer.valueOf(jTextField5.getText());
+            String textoDeConsulta = movimientosControlador.listar(id) + "\n" + valoracionDeInventarioControlador.verValoracionDelInventario(id);
+            jTextArea1.setText(textoDeConsulta);
+        }
+        else {
+            jTextArea1.setText(productoControlador.listar());
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Integer id = Integer.valueOf(jTextField1.getText());
+        String nombre = jTextField2.getText();
+        double precioUnitario = Double.valueOf(jTextField3.getText());
+        Integer cantidad = Integer.valueOf(jTextField4.getText());
+        
+        productoControlador.registrar(id, nombre);
+        movimientosControlador.registrarRegistro(productoControlador.getProducto(id), "Pendiente", cantidad, precioUnitario);
+        valoracionDeInventarioControlador.registrarPrimeraValoracion(productoControlador.getProducto(id), cantidad, precioUnitario);
+        
+        JOptionPane.showMessageDialog(null, "Producto registrado exitosamente");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -373,14 +409,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public void generarCSValCerrar(){
 
         try {
-
             addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosing(WindowEvent e) {
-                    ProductoControlador.generarCSV();
-                    MovimientosControlador.generarCSV();
-                    ValoracionDeInventarioControlador.generarCSV();
-                    System.out.println("Estoy cerrando");
+                    productoControlador.generarCSV();
+                    movimientosControlador.generarCSV();
+                    valoracionDeInventarioControlador.generarCSV();
                     }
                 });
 
@@ -390,6 +424,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
 
     }
+    
+    public static boolean isNumeric(String s){
+        try {
+            Integer.parseInt(s);
+        } catch (NumberFormatException ex) {
+            return false;
+        }
+        return true;
+    }
+    
+    private MovimientosControlador movimientosControlador;
+    private ProductoControlador productoControlador;
+    private ValoracionDeInventarioControlador valoracionDeInventarioControlador;
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

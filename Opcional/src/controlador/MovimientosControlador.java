@@ -15,6 +15,7 @@ import java.util.Map;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import modelo.MovimientosModelo;
 import modelo.ProductoModelo;
 
@@ -31,23 +32,27 @@ public class MovimientosControlador {
         listaMovimientos = new HashMap<>();
     }
     
-    public static String listar(Integer id) {
-        String lista = "---------- Movimientos del producto " + ((listaMovimientos.get(id)).getProducto()).getNombre() + " ----------\n";
-        for(int idAux : listaMovimientos.keySet()){
-            if (idAux == id) {
-                lista += listaMovimientos.get(idAux) + "\n";
+    public String listar(Integer id) {
+        if (listaMovimientos.containsKey(id)){
+            String lista = "---------- Movimientos del producto " + ((listaMovimientos.get(id)).getProducto()).getNombre() + " ----------\n";
+            for(int idAux : listaMovimientos.keySet()){
+                if (idAux == id) {
+                    lista += listaMovimientos.get(idAux) + "\n";
+                }
             }
+            return lista;
+        } else {
+            return "";
         }
-        return lista;
     }
     
-    public static void generarCSV() {
+    public void generarCSV() {
         String archivoPersistencia = "";
         for(int codigo : listaMovimientos.keySet()){
             archivoPersistencia += listaMovimientos.get(codigo) + "\n";
         }
         try {
-            FileOutputStream os = new FileOutputStream(new File("src\\main\\java\\persistencia\\movimientosPersistencia.txt"));
+            FileOutputStream os = new FileOutputStream(new File("src\\Persistencia\\movimientosPersistencia.txt"));
             os.write(archivoPersistencia.getBytes());
         } catch (FileNotFoundException ex) {
             Logger.getLogger(MovimientosControlador.class.getName()).log(Level.SEVERE, null, ex);
@@ -57,7 +62,7 @@ public class MovimientosControlador {
     }
     
     public void restaurarDatos() {
-        File archivo = new File("src\\main\\java\\persistencia\\movimientosPersistencia.txt");
+        File archivo = new File("src\\Persistencia\\movimientosPersistencia.txt");
         StringTokenizer stringTokenizer;
   
         String cadena1;
@@ -123,7 +128,6 @@ public class MovimientosControlador {
     }
     
     public void registrarSalida(ProductoModelo producto, String fecha, Integer cantidad, ValoracionDeInventarioControlador valoracionDeInventario) {
-        
         MovimientosModelo movimientos = new MovimientosModelo(producto, fecha, "Salida", cantidad, valoracionDeInventario.getValorUnitario(producto.getId()), ((valoracionDeInventario.getValorUnitario(producto.getId()))*cantidad));
         listaMovimientos.put((movimientos.getProducto()).getId(), movimientos);
     }

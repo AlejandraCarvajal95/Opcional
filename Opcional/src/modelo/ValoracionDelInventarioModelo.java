@@ -54,7 +54,7 @@ public class ValoracionDelInventarioModelo {
     
     @Override
     public String toString() {
-        return "{" + "Id: " + this.getProducto().getId() + "Nombre: " + this.getProducto().getNombre() + "Cantidad: " + this.cantidad + "Valor unidad: " + this.getValorUnidad() + "Valor total: " + this.getValorTotal() + "}";
+        return "{" + "Id: " + this.getProducto().getId() + ", Nombre: " + this.getProducto().getNombre() + ", Cantidad: " + this.cantidad + ", Valor unidad: " + this.getValorUnidad() + ", Valor total: " + this.getValorTotal() + "}";
     }
 }
 
