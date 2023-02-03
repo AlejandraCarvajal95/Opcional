@@ -4,7 +4,11 @@
  */
 package vista;
 
+import controlador.MovimientosControlador;
 import controlador.ProductoControlador;
+import controlador.ValoracionDeInventarioControlador;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  *
@@ -363,6 +367,28 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
     }
 
+    
+    
+                public void generarCSValCerrar(){
+        
+            try {
+                
+                addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosing(WindowEvent e) {
+                       // ProductoControlador.generarCSV();
+                       // MovimientosControlador.generarCSV();
+                       // ValoracionDeInventarioControlador.generarCSV();
+                        System.out.println("Estoy cerrando");
+                        }
+                    });
+                        
+            }catch (Exception e){
+                e.printStackTrace();
+
+            }
+
+        }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
