@@ -1,1 +1,1 @@
-{Id: 1, Nombre: Alejandra, Cantidad: 2, Valor unidad: 1000.0, Valor total: 2000.0}
+{Id: 1, Nombre: Alejandra, Cantidad: 4, Valor unidad: 1500.0, Valor total: 6000.0}
