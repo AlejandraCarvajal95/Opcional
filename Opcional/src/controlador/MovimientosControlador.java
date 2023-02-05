@@ -11,15 +11,13 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import modelo.MovimientosModelo;
 import modelo.ProductoModelo;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * @authors:
@@ -30,16 +28,12 @@ import modelo.ProductoModelo;
 public class MovimientosControlador {
 //    private static Map <Integer, MovimientosModelo> listaMovimientos;
     private List<String> listaMovimientos;
+    private String fecha;
     
     public MovimientosControlador(){
 //        listaMovimientos = new HashMap<>();
-    listaMovimientos = new ArrayList<>();
+        listaMovimientos = new ArrayList<>();
     }
-    /*
-    public String  PonerFecha(){
-    
-    return String fecha;
-    }*/
     
     public String listar(Integer id, ProductoControlador productoControlador) {
         String strAux = "{Id: " + String.valueOf(id);
@@ -89,17 +83,20 @@ public class MovimientosControlador {
     }
     
     public void registrarRegistro(ProductoModelo producto, String fecha, Integer cantidad, double valorUnidad) {
-        MovimientosModelo movimientos = new MovimientosModelo(producto, fecha, "Registro", cantidad, valorUnidad, (valorUnidad*cantidad));
+        this.fecha = DateTimeFormatter.ofPattern("MMM dd yyyy, hh:mm:ss a").format(LocalDateTime.now());
+        MovimientosModelo movimientos = new MovimientosModelo(producto, String.valueOf(this.fecha), "Registro", cantidad, valorUnidad, (valorUnidad*cantidad));
         listaMovimientos.add(movimientos.toString());
     }
     
     public void registrarEntrada(ProductoModelo producto, String fecha, Integer cantidad, double valorUnidad) {
-        MovimientosModelo movimientos = new MovimientosModelo(producto, fecha, "Entrada", cantidad, valorUnidad, (valorUnidad*cantidad));
+        this.fecha = DateTimeFormatter.ofPattern("MMM dd yyyy, hh:mm:ss a").format(LocalDateTime.now());
+        MovimientosModelo movimientos = new MovimientosModelo(producto, String.valueOf(this.fecha), "Entrada", cantidad, valorUnidad, (valorUnidad*cantidad));
         listaMovimientos.add(movimientos.toString());
     }
     
     public void registrarSalida(ProductoModelo producto, String fecha, Integer cantidad, ValoracionDeInventarioControlador valoracionDeInventario) {
-        MovimientosModelo movimientos = new MovimientosModelo(producto, fecha, "Salida", cantidad, valoracionDeInventario.getValorUnitario(producto.getId()), ((valoracionDeInventario.getValorUnitario(producto.getId()))*cantidad));
+        this.fecha = DateTimeFormatter.ofPattern("MMM dd yyyy, hh:mm:ss a").format(LocalDateTime.now());
+        MovimientosModelo movimientos = new MovimientosModelo(producto, String.valueOf(this.fecha), "Salida", cantidad, valoracionDeInventario.getValorUnitario(producto.getId()), ((valoracionDeInventario.getValorUnitario(producto.getId()))*cantidad));
         listaMovimientos.add(movimientos.toString());
     }
 }

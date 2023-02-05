@@ -1,4 +1,2 @@
-{Id: 1, Nombre: Alejandra, Fecha: Pendiente, Movimiento: Registro, Cantidad: 2, Valor unidad: 100000.0, Valor total: 200000.0}
-{Id: 2, Nombre: Levi, Fecha: Pendiente, Movimiento: Registro, Cantidad: 5, Valor unidad: 1000000.0, Valor total: 5000000.0}
-{Id: 2, Nombre: Levi, Fecha: pendiente, Movimiento: Salida, Cantidad: 2, Valor unidad: 1000000.0, Valor total: 2000000.0}
-{Id: 1, Nombre: Alejandra, Fecha: pendiente, Movimiento: Entrada, Cantidad: 3, Valor unidad: 150000.0, Valor total: 450000.0}
+{Id: 1, Nombre: Alejandra, Fecha: feb 05 2023, 03:42:17 p. m., Movimiento: Registro, Cantidad: 5, Valor unidad: 1000.0, Valor total: 5000.0}
+{Id: 1, Nombre: Alejandra, Fecha: feb 05 2023, 03:43:45 p. m., Movimiento: Salida, Cantidad: 3, Valor unidad: 1000.0, Valor total: 3000.0}
